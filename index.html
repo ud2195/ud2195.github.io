@@ -1,12 +1,733 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uday Khanna | GenAI, Retrieval & Product Engineering</title>
+  <meta name="description" content="Uday Khanna — Founder of LayR. Ex-Atlassian ML Engineer. GenAI, Retrieval, NLP, AWS. Patents in ML interfaces & incident insights." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Uday Khanna | GenAI, Retrieval & Product Engineering" />
+  <meta property="og:description" content="Founder of LayR. Ex-Atlassian ML Engineer. GenAI, Retrieval, NLP, AWS. Patents in ML interfaces & incident insights." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ud2195.github.io" />
+
+  <style>
+    :root{
+      --bg: #0b0f17;
+      --panel: rgba(255,255,255,0.06);
+      --panel2: rgba(255,255,255,0.08);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --muted2: rgba(255,255,255,0.55);
+      --line: rgba(255,255,255,0.12);
+      --shadow: 0 20px 50px rgba(0,0,0,0.35);
+      --accent: #7c5cff;      /* purple */
+      --accent2: #27e0a3;     /* mint */
+      --warn: #ffcc66;
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1100px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{ box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(124,92,255,0.25), transparent 55%),
+        radial-gradient(700px 500px at 80% 20%, rgba(39,224,163,0.18), transparent 55%),
+        radial-gradient(900px 600px at 40% 90%, rgba(124,92,255,0.12), transparent 60%),
+        var(--bg);
+      overflow-x: hidden;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 18px 80px;
+    }
+
+    /* Top nav */
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(to bottom, rgba(11,15,23,0.78), rgba(11,15,23,0.35));
+    }
+    .nav-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 220px;
+    }
+    .dot{
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 35% 35%, var(--accent2), var(--accent));
+      box-shadow: 0 0 0 6px rgba(124,92,255,0.10);
+    }
+    .brand .name{
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .brand .role{
+      font-size: 12px;
+      color: var(--muted2);
+      margin-top: 2px;
+    }
+    .navlinks{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+    .pill{
+      font-size: 13px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      border-color: rgba(124,92,255,0.55);
+      background: rgba(124,92,255,0.10);
+      text-decoration: none;
+    }
+    .pill.primary{
+      border-color: rgba(39,224,163,0.55);
+      background: rgba(39,224,163,0.10);
+    }
+    .pill.primary:hover{
+      border-color: rgba(39,224,163,0.85);
+      background: rgba(39,224,163,0.16);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 44px 0 26px;
+    }
+    .hero-grid{
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .card{
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+    }
+    .hero-main{
+      padding: 28px 26px;
+      position: relative;
+      overflow: hidden;
+    }
+    .shine{
+      position: absolute;
+      inset: -200px -120px auto auto;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle at 30% 30%, rgba(39,224,163,0.18), transparent 60%),
+                  radial-gradient(circle at 60% 60%, rgba(124,92,255,0.20), transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+    .kicker{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+    .kicker b{ color: rgba(255,255,255,0.92); font-weight: 700; }
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(34px, 4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+    .sub{
+      margin: 0;
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 66ch;
+    }
+    .cta{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      font-size: 14px;
+      text-decoration: none !important;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(124,92,255,0.7);
+      background: rgba(124,92,255,0.10);
+    }
+    .btn strong{
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .btn.primary{
+      border-color: rgba(39,224,163,0.6);
+      background: rgba(39,224,163,0.10);
+    }
+    .btn.primary:hover{
+      border-color: rgba(39,224,163,0.95);
+      background: rgba(39,224,163,0.16);
+    }
+    .btn .icon{
+      width: 18px; height: 18px; display:inline-block;
+    }
+    .small{
+      font-size: 12px;
+      color: var(--muted2);
+      margin-top: 10px;
+    }
+    .small code{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(255,255,255,0.80);
+      background: rgba(255,255,255,0.05);
+      padding: 2px 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .hero-side{
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mini{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.03);
+      padding: 14px 14px;
+    }
+    .mini h3{
+      margin: 0 0 6px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.86);
+      letter-spacing: -0.01em;
+    }
+    .mini p{
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .tagrow{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .tag{
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      color: rgba(255,255,255,0.80);
+      white-space: nowrap;
+    }
+    .tag.accent{ border-color: rgba(124,92,255,0.5); background: rgba(124,92,255,0.10); }
+    .tag.mint{ border-color: rgba(39,224,163,0.5); background: rgba(39,224,163,0.10); }
+    .tag.warn{ border-color: rgba(255,204,102,0.45); background: rgba(255,204,102,0.10); }
+
+    /* Sections */
+    section{ margin-top: 28px; }
+    .section-title{
+      display:flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 10px 0 12px;
+    }
+    .section-title h2{
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+    .section-title .hint{
+      font-size: 12px;
+      color: var(--muted2);
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .panel{
+      padding: 18px;
+      border-radius: var(--radius2);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, var(--panel), rgba(255,255,255,0.03));
+      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+    }
+    .panel h3{
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+    .panel .meta{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+      color: var(--muted2);
+      font-size: 12px;
+    }
+    .panel p{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+    .bullets{
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+    .bullets li{ margin: 8px 0; }
+    .bullets b{
+      color: rgba(255,255,255,0.88);
+      font-weight: 700;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    /* Patents list */
+    .pat{
+      margin-top: 10px;
+      display: grid;
+      gap: 10px;
+    }
+    .pat-item{
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+    .pat-item .top{
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .pat-item h4{
+      margin: 0;
+      font-size: 14px;
+      letter-spacing: -0.01em;
+    }
+    .badge{
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(124,92,255,0.45);
+      background: rgba(124,92,255,0.10);
+      color: rgba(255,255,255,0.86);
+      white-space: nowrap;
+    }
+    .pat-item p{
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer{
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted2);
+      font-size: 12px;
+      display:flex;
+      flex-wrap: wrap;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .footlinks{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footlinks a{
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: 1fr; }
+      .split{ grid-template-columns: 1fr; }
+      .brand{ min-width: unset; }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Welcome to My Personal Website</h1>
-    <p>This site is hosted on GitHub Pages!</p>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="dot"></div>
+        <div>
+          <div class="name">Uday Khanna</div>
+          <div class="role">GenAI • Retrieval • NLP • AWS • Product Engineering</div>
+        </div>
+      </div>
+      <div class="navlinks">
+        <a class="pill" href="#layr">LayR</a>
+        <a class="pill" href="#experience">Experience</a>
+        <a class="pill" href="#patents">Patents</a>
+        <a class="pill" href="#work">Selected Work</a>
+        <a class="pill primary" href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-grid">
+        <div class="card hero-main">
+          <div class="shine"></div>
+
+          <div class="kicker">
+            <b>Founder</b> @ LayR • <b>Ex-ML Engineer</b> @ Atlassian • Building scalable GenAI & retrieval systems
+          </div>
+
+          <h1>Building AI products that ship, scale, and move business metrics.</h1>
+          <p class="sub">
+            I work end-to-end — from research and evaluation to infrastructure, deployment, and measurable impact.
+            I’ve built high-performance retrieval + re-ranking pipelines, migrated embeddings to reduce latency,
+            and I’m currently building <b>LayR</b>, an AI stylist and digital closet app.
+          </p>
+
+          <div class="cta">
+            <a class="btn primary" href="https://github.com/ud2195" target="_blank" rel="noreferrer">
+              <span class="icon">↗</span><strong>GitHub</strong>
+            </a>
+            <a class="btn" href="https://www.linkedin.com/in/uday-khanna-325507157" target="_blank" rel="noreferrer">
+              <span class="icon">↗</span><strong>LinkedIn</strong>
+            </a>
+            <!-- Replace with your LayR link -->
+            <a class="btn" href="#" target="_blank" rel="noreferrer">
+              <span class="icon">↗</span><strong>LayR</strong>
+            </a>
+          </div>
+
+          <div class="small">
+            Note: Most production repositories are private. If you’re evaluating for a role, I’m happy to do a deep walkthrough of architecture, code structure, and decision trade-offs.
+            <br/>Quick focus areas: <code>Retrieval</code> <code>Re-ranking</code> <code>LLM eval</code> <code>CV + embeddings</code> <code>AWS infra</code>
+          </div>
+        </div>
+
+        <div class="card hero-side">
+          <div class="mini">
+            <h3>What I build</h3>
+            <p>AI-native experiences + systems that are fast, reliable, and cost-aware in production.</p>
+            <div class="tagrow">
+              <span class="tag accent">GenAI</span>
+              <span class="tag mint">Retrieval</span>
+              <span class="tag">NLP</span>
+              <span class="tag">Computer Vision</span>
+              <span class="tag warn">AWS</span>
+            </div>
+          </div>
+
+          <div class="mini">
+            <h3>What I optimize for</h3>
+            <p>Latency • cost • quality • evaluation rigor • clear ROI.</p>
+            <div class="tagrow">
+              <span class="tag">MRR / Hit-rate</span>
+              <span class="tag">LLM-as-judge</span>
+              <span class="tag">HNSW / KNN</span>
+              <span class="tag">Hamming / Binary</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAYR -->
+    <section id="layr">
+      <div class="section-title">
+        <h2>LayR</h2>
+        <div class="hint">AI stylist • digital closet • personalization loops</div>
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <h3>LayR — AI-powered digital closet & personal stylist</h3>
+          <div class="meta">
+            <span>Founder</span><span>•</span><span>2025 → Present</span><span>•</span><span>Consumer AI</span>
+          </div>
+          <p>
+            LayR helps users finally wear everything they own — with confidence.
+            It organizes wardrobes, understands body shape & color palette, and generates personalized outfits in seconds.
+          </p>
+
+          <ul class="bullets">
+            <li><b>Style profiling:</b> body shape + color analysis + preference capture → consistent personalization.</li>
+            <li><b>Wardrobe intelligence:</b> item metadata extraction, tagging, and retrieval to power instant outfit ideas.</li>
+            <li><b>Outfit generation:</b> occasion-aware recommendations with saving/recall loops for retention.</li>
+            <li><b>AI-native UX loops:</b> upload → value → save → notification/plan → repeat.</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>Why it’s hard (and what I solved)</h3>
+          <p>
+            AI styling isn’t just model demos — it’s latency, costs, and product loops.
+            I focus on making the system feel <b>instant</b>, <b>reliable</b>, and <b>habit-forming</b>.
+          </p>
+
+          <ul class="bullets">
+            <li><b>Latency discipline:</b> caching + batching + model selection to keep experiences snappy.</li>
+            <li><b>Quality evaluation:</b> human-in-the-loop and LLM-assisted judging to ship improvements safely.</li>
+            <li><b>Practical infra:</b> AWS-first design (serverless + managed services) with production monitoring.</li>
+            <li><b>Growth-friendly outputs:</b> content-ready transformations for short-form sharing loops.</li>
+          </ul>
+
+          <div class="tagrow" style="margin-top:12px;">
+            <span class="tag mint">Personalization</span>
+            <span class="tag accent">UX Loops</span>
+            <span class="tag">Cost-aware AI</span>
+            <span class="tag warn">Production-first</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-title">
+        <h2>Past Experience</h2>
+        <div class="hint">What I shipped in production</div>
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <h3>Atlassian — Machine Learning Engineer</h3>
+          <div class="meta">
+            <span>Search / Retrieval</span><span>•</span><span>Re-ranking</span><span>•</span><span>Evaluation</span><span>•</span><span>AWS</span>
+          </div>
+          <p>
+            Led experiments and production improvements across retrieval and re-ranking systems.
+            Focused on balancing quality with infra constraints (latency, memory, storage).
+          </p>
+          <ul class="bullets">
+            <li><b>Retrieval + re-ranking:</b> evaluated embedding models (MRR/AP@k/hit-rate) and optimized pipelines with cost constraints.</li>
+            <li><b>Binary embeddings migration:</b> redesigned similarity search from cosine → Hamming; improved overall latency by ~2.5s/query.</li>
+            <li><b>Hybrid search:</b> combined semantic + keyword techniques and integrated SOTA rerankers + query reformulation.</li>
+            <li><b>Evaluation rigor:</b> built an LLM-as-judge framework with human-in-the-loop for high-fidelity assessment.</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>Earlier Roles — NLP & Computer Vision</h3>
+          <div class="meta">
+            <span>Medical NLP</span><span>•</span><span>Document AI</span><span>•</span><span>SageMaker</span>
+          </div>
+          <p>
+            Built and deployed NLP and CV pipelines for real-world document automation — from BERT-based entailment
+            to table extraction and checkbox detection.
+          </p>
+          <ul class="bullets">
+            <li><b>NLP:</b> fine-tuned BERT models and improved task accuracy over prior baselines.</li>
+            <li><b>CV:</b> automated document understanding workflows (handwritten detection, table extraction, etc.).</li>
+            <li><b>Infra:</b> designed training + deployment pipelines using Docker and AWS SageMaker to speed experimentation cycles.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PATENTS -->
+    <section id="patents">
+      <div class="section-title">
+        <h2>Patents</h2>
+        <div class="hint">Selected inventions (add links if public)</div>
+      </div>
+
+      <div class="panel">
+        <p style="margin-bottom:10px;">
+          I’ve contributed to inventions focused on <b>ML-powered interfaces</b> and <b>operational insight experiences</b>.
+        </p>
+
+        <div class="pat">
+          <div class="pat-item">
+            <div class="top">
+              <h4>Generative interface for multi-platform content</h4>
+              <span class="badge">Patent (Pending)</span>
+            </div>
+            <p>
+              Methods for using trained ML models to generate interface components that adapt content experiences across platforms.
+            </p>
+          </div>
+
+          <div class="pat-item">
+            <div class="top">
+              <h4>Applying trained ML models to output past incident insight interface components to an incident alert management UI</h4>
+              <span class="badge">Patent (Pending)</span>
+            </div>
+            <p>
+              Systems for surfacing historical incident insights directly inside alert management workflows to improve response speed and decision quality.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTED WORK / UX LOOPS -->
+    <section id="work">
+      <div class="section-title">
+        <h2>Selected Work</h2>
+        <div class="hint">How I think: constraints → system → shipped outcome</div>
+      </div>
+
+      <div class="split">
+        <div class="panel">
+          <h3>Retrieval systems that balance quality + cost</h3>
+          <p>
+            I approach retrieval like a product: quality metrics are necessary, but not sufficient.
+            The winning system optimizes quality while respecting latency, memory, and infra constraints.
+          </p>
+          <ul class="bullets">
+            <li><b>Trade-offs:</b> embedding dimensionality vs storage vs latency vs quality.</li>
+            <li><b>Indexing:</b> KNN/HNSW/IVF choices based on constraints, not hype.</li>
+            <li><b>Evaluation:</b> offline metrics + calibrated human/LLM judgments.</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>UX loops for AI products</h3>
+          <p>
+            AI is only “magic” if users come back. I design loops that create repeated value:
+            trigger → action → reward → next trigger.
+          </p>
+          <ul class="bullets">
+            <li><b>Personalization loop:</b> profile → better recs → refinement → better recs.</li>
+            <li><b>Wardrobe loop:</b> upload items → outfits improve → upload more items.</li>
+            <li><b>Share loop:</b> transformations → short-form content → installs → more content.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <div class="hint">Best way to reach me</div>
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <h3>Let’s talk</h3>
+          <p>
+            If you're building GenAI products, retrieval systems, agentic workflows, or consumer AI with real constraints,
+            I’d love to connect.
+          </p>
+
+          <div class="cta" style="margin-top:14px;">
+            <a class="btn primary" href="mailto:udaykhanna2195@gmail.com">
+              <span class="icon">✉</span><strong>Email</strong> <span style="color:var(--muted2); font-size:12px;">udaykhanna2195@gmail.com</span>
+            </a>
+            <a class="btn" href="https://github.com/ud2195" target="_blank" rel="noreferrer">
+              <span class="icon">↗</span><strong>GitHub</strong>
+            </a>
+            <a class="btn" href="https://www.linkedin.com/in/uday-khanna-325507157" target="_blank" rel="noreferrer">
+              <span class="icon">↗</span><strong>LinkedIn</strong>
+            </a>
+          </div>
+
+          <div class="small">
+            If you want code samples but repos are private: I can share targeted snippets, architecture diagrams, or do a live walkthrough.
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Links (edit these)</h3>
+          <ul class="bullets">
+            <li><b>GitHub:</b> <a href="https://github.com/ud2195" target="_blank" rel="noreferrer">github.com/ud2195</a></li>
+            <li><b>Portfolio:</b> <a href="https://ud2195.github.io" target="_blank" rel="noreferrer">ud2195.github.io</a></li>
+            <li><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/uday-khanna-325507157" target="_blank" rel="noreferrer">uday-khanna-325507157</a></li>
+            <li><b>LayR:</b> <span style="color:var(--muted2);">Add your App Store / website link</span></li>
+            <li><b>TikTok:</b> <span style="color:var(--muted2);">Add 2–3 example links</span></li>
+            <li><b>Google Patents:</b> <span style="color:var(--muted2);">Add your patents search link (optional)</span></li>
+          </ul>
+          <div class="small">
+            Replace the placeholder LayR + TikTok URLs above with real links and you're ready to share this portfolio.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> Uday Khanna • Built on GitHub Pages</div>
+      <div class="footlinks">
+        <a href="#layr">LayR</a>
+        <a href="#experience">Experience</a>
+        <a href="#patents">Patents</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
