@@ -127,7 +127,7 @@
     }
     .hero-grid{
       display: grid;
-      grid-template-columns: 1.35fr 0.65fr;
+      grid-template-columns: 1fr;
       gap: 18px;
       align-items: stretch;
     }
@@ -167,7 +167,7 @@
       font-size: 16px;
       color: var(--muted);
       line-height: 1.65;
-      max-width: 68ch;
+      max-width: 80ch;
     }
 
     .cta{
@@ -211,46 +211,6 @@
       padding: 2px 6px;
       border: 1px solid var(--line);
       border-radius: 8px;
-    }
-
-    .hero-side{
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .mini{
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,0.02);
-      padding: 14px 14px;
-    }
-    .mini h3{
-      margin: 0 0 6px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.92);
-      letter-spacing: -0.01em;
-    }
-    .mini p{
-      margin: 0;
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-    .tagrow{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-    }
-    .tag{
-      font-size: 12px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
-      color: rgba(255,255,255,0.78);
-      white-space: nowrap;
     }
 
     /* Sections */
@@ -314,12 +274,6 @@
     .bullets b{
       color: rgba(255,255,255,0.92);
       font-weight: 700;
-    }
-
-    .split{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
     }
 
     /* Patents list */
@@ -389,9 +343,7 @@
     }
 
     @media (max-width: 900px){
-      .hero-grid{ grid-template-columns: 1fr; }
       .grid{ grid-template-columns: 1fr; }
-      .split{ grid-template-columns: 1fr; }
       .brand{ min-width: unset; }
     }
   </style>
@@ -412,7 +364,6 @@
         <a class="pill" href="#layr">LayR</a>
         <a class="pill" href="#experience">Experience</a>
         <a class="pill" href="#patents">Patents</a>
-        <a class="pill" href="#work">Selected Work</a>
         <a class="pill primary" href="#contact">Contact</a>
       </div>
     </div>
@@ -429,54 +380,22 @@
 
           <h1>Building AI products that ship, scale, and move business metrics.</h1>
           <p class="sub">
-            I work end-to-end — from research and evaluation to infrastructure, deployment, and measurable impact.
-            I’ve built high-performance retrieval + re-ranking pipelines, migrated embeddings to reduce latency,
-            and I’m currently building <b>LayR</b>, an AI stylist and digital closet app.
+            I work end-to-end from research and evaluation to infrastructure, deployment, and measurable impact.
+            I’ve built high-performance LLM systems involving retrieval + re-ranking + LLM-as-judge pipelines,
+            migrated float embeddings to binary embeddings to reduce latency while preserving quality and boosting CSAT by 45%,
+            mentored a team of 5 engineers, and I’m currently building <b>LayR</b>, an AI stylist and digital closet app.
           </p>
 
           <div class="cta">
-            <a class="btn" href="https://layr.style/" target="_blank" rel="noreferrer">
-              <strong>LayR Website</strong> ↗
-            </a>
-            <a class="btn" href="https://apps.apple.com/us/app/outfit-planner-maker-layr/id6753217054" target="_blank" rel="noreferrer">
-              <strong>App Store</strong> ↗
-            </a>
-            <a class="btn" href="https://github.com/ud2195" target="_blank" rel="noreferrer">
-              <strong>GitHub</strong> ↗
-            </a>
-            <a class="btn" href="https://www.linkedin.com/in/uday-khanna-325507157" target="_blank" rel="noreferrer">
-              <strong>LinkedIn</strong> ↗
-            </a>
+            <a class="btn" href="https://layr.style/" target="_blank" rel="noreferrer"><strong>LayR Website</strong> ↗</a>
+            <a class="btn" href="https://apps.apple.com/us/app/outfit-planner-maker-layr/id6753217054" target="_blank" rel="noreferrer"><strong>App Store</strong> ↗</a>
+            <a class="btn" href="https://www.youtube.com/@LayR_outfit_app" target="_blank" rel="noreferrer"><strong>YouTube</strong> ↗</a>
+            <a class="btn" href="https://github.com/ud2195" target="_blank" rel="noreferrer"><strong>GitHub</strong> ↗</a>
+            <a class="btn" href="https://www.linkedin.com/in/uday-khanna-325507157" target="_blank" rel="noreferrer"><strong>LinkedIn</strong> ↗</a>
           </div>
 
           <div class="small">
             Most production repositories are private. I’m happy to do a deep walkthrough of architecture, code structure, and decision trade-offs.
-            <br/>Focus areas: <code>Retrieval</code> <code>Re-ranking</code> <code>GenAI</code> <code>CV + embeddings</code> <code>AWS infra</code>
-          </div>
-        </div>
-
-        <div class="card hero-side">
-          <div class="mini">
-            <h3>What I build</h3>
-            <p>AI-native experiences + systems that are fast, reliable, and cost-aware in production.</p>
-            <div class="tagrow">
-              <span class="tag">GenAI</span>
-              <span class="tag">Retrieval</span>
-              <span class="tag">NLP</span>
-              <span class="tag">Computer Vision</span>
-              <span class="tag">AWS</span>
-            </div>
-          </div>
-
-          <div class="mini">
-            <h3>What I optimize for</h3>
-            <p>Latency • cost • quality • evaluation rigor • clear ROI.</p>
-            <div class="tagrow">
-              <span class="tag">MRR / Hit-rate</span>
-              <span class="tag">Hybrid Search</span>
-              <span class="tag">HNSW / KNN</span>
-              <span class="tag">Hamming / Binary</span>
-            </div>
           </div>
         </div>
       </div>
@@ -508,6 +427,12 @@
             <li><b>Outfit Generation:</b> occasion-aware outfit composition from owned items with saved looks + fast re-generation.</li>
             <li><b>Retention Loops:</b> upload → better outfits → save to plans/occasions → revisit → repeat; quality improves as the closet grows.</li>
           </ul>
+
+          <div class="small" style="margin-top:12px;">
+            <a href="https://layr.style/" target="_blank" rel="noreferrer">layr.style</a> •
+            <a href="https://apps.apple.com/us/app/outfit-planner-maker-layr/id6753217054" target="_blank" rel="noreferrer">App Store</a> •
+            <a href="https://www.youtube.com/@LayR_outfit_app" target="_blank" rel="noreferrer">YouTube (TikTok examples)</a>
+          </div>
         </div>
 
         <div class="panel">
@@ -523,12 +448,6 @@
             <li><b>Production infrastructure:</b> AWS-first architecture (serverless + managed services) designed to scale cost-efficiently.</li>
             <li><b>Growth-friendly outputs:</b> content-ready results that translate well to short-form social formats.</li>
           </ul>
-
-          <div class="small" style="margin-top:12px;">
-            Links: <a href="https://layr.style/" target="_blank" rel="noreferrer">layr.style</a> •
-            <a href="https://apps.apple.com/us/app/outfit-planner-maker-layr/id6753217054" target="_blank" rel="noreferrer">App Store</a> •
-            <a href="https://www.youtube.com/@LayR_outfit_app" target="_blank" rel="noreferrer">YouTube (TikTok examples)</a>
-          </div>
         </div>
       </div>
     </section>
@@ -536,25 +455,31 @@
     <!-- EXPERIENCE -->
     <section id="experience">
       <div class="section-title">
-        <h2>Past Experience</h2>
-        <div class="hint">What I shipped in production</div>
+        <h2>Experience</h2>
+        <div class="hint">Atlassian • NLP/CV • Production ML</div>
       </div>
 
       <div class="grid">
         <div class="panel">
           <h3>Atlassian — Machine Learning Engineer</h3>
           <div class="meta">
-            <span>Search / Retrieval</span><span>•</span><span>Re-ranking</span><span>•</span><span>Evaluation</span><span>•</span><span>AWS</span>
+            <span>Search / Retrieval</span><span>•</span><span>Re-ranking</span><span>•</span><span>LLM Systems</span><span>•</span><span>Evaluation</span><span>•</span><span>AWS</span>
           </div>
+
           <p>
-            Led experiments and production improvements across retrieval and re-ranking systems, balancing quality with infra constraints
-            (latency, memory, storage).
+            Built and shipped high-impact LLM and retrieval systems powering search and operational experiences.
+            Delivered major business outcomes: ~<b>2.5s latency reduction</b> via float→binary embedding migration while preserving quality,
+            and a <b>~45% CSAT improvement</b> through systematic retrieval + re-ranking and evaluation improvements.
+            Mentored a team of <b>5 engineers</b> and contributed to <b>two published patent applications</b>.
           </p>
+
           <ul class="bullets">
-            <li><b>Retrieval + re-ranking:</b> evaluated embedding models (MRR/AP@k/hit-rate) and optimized pipelines under cost constraints.</li>
-            <li><b>Binary embeddings migration:</b> redesigned similarity search from cosine → Hamming; improved overall latency by ~2.5s/query.</li>
-            <li><b>Hybrid search:</b> combined semantic + keyword approaches; integrated rerankers and query reformulation.</li>
-            <li><b>Evaluation rigor:</b> built an LLM-as-judge evaluation framework to improve iteration speed and consistency.</li>
+            <li><b>Retrieval + re-ranking:</b> improved semantic retrieval, hybrid search, and reranking strategies to boost relevance and customer outcomes.</li>
+            <li><b>Float → binary embeddings:</b> migrated similarity search from cosine float embeddings to Hamming binary embeddings to cut latency (~2.5s) with quality safeguards.</li>
+            <li><b>LLM evaluation:</b> built LLM-as-judge + human-in-the-loop evaluation workflows to accelerate iteration and maintain reliability.</li>
+            <li><b>LLM optimizations:</b> prompt/system tuning, query reformulation, and cost-aware orchestration for production constraints.</li>
+            <li><b>Analytics + monitoring:</b> improved instrumentation, dashboards, and observability to catch regressions and guide roadmap decisions.</li>
+            <li><b>Leadership:</b> mentored and unblocked a team of 5 engineers across experimentation and production delivery.</li>
           </ul>
         </div>
 
@@ -579,12 +504,12 @@
     <section id="patents">
       <div class="section-title">
         <h2>Patents</h2>
-        <div class="hint">Published applications</div>
+        <div class="hint">Published applications (Atlassian)</div>
       </div>
 
       <div class="panel">
         <p style="margin-bottom:10px;">
-          Patents published with Atlassian focused on <b>ML-powered interfaces</b> and <b>operational insight experiences</b>:
+          Two published patent applications focused on <b>ML-powered interfaces</b> and <b>operational insight experiences</b>:
         </p>
 
         <div class="pat">
@@ -611,42 +536,6 @@
       </div>
     </section>
 
-    <!-- SELECTED WORK -->
-    <section id="work">
-      <div class="section-title">
-        <h2>Selected Work</h2>
-        <div class="hint">How I think: constraints → system → shipped outcome</div>
-      </div>
-
-      <div class="split">
-        <div class="panel">
-          <h3>Retrieval systems that balance quality + cost</h3>
-          <p>
-            I approach retrieval like a product: offline metrics are necessary, but not sufficient.
-            The best systems optimize quality while respecting latency, memory, and infra constraints.
-          </p>
-          <ul class="bullets">
-            <li><b>Trade-offs:</b> embedding dimensionality vs storage vs latency vs quality.</li>
-            <li><b>Indexing:</b> choosing KNN/HNSW/IVF based on constraints, not hype.</li>
-            <li><b>Evaluation:</b> strong offline metrics + practical online iteration loops.</li>
-          </ul>
-        </div>
-
-        <div class="panel">
-          <h3>UX loops for AI products</h3>
-          <p>
-            AI is only “magic” if users come back. I design loops that create repeated value:
-            trigger → action → reward → next trigger.
-          </p>
-          <ul class="bullets">
-            <li><b>Personalization loop:</b> profile → better recs → refinement → better recs.</li>
-            <li><b>Wardrobe loop:</b> upload items → outfits improve → upload more items.</li>
-            <li><b>Content loop:</b> shareable outputs → social discovery → installs → more outputs.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
     <!-- CONTACT -->
     <section id="contact">
       <div class="section-title">
@@ -666,12 +555,8 @@
             <a class="btn" href="mailto:udaykhanna2195@gmail.com">
               <strong>Email</strong> ↗ <span style="color:var(--muted2); font-size:12px;">udaykhanna2195@gmail.com</span>
             </a>
-            <a class="btn" href="https://github.com/ud2195" target="_blank" rel="noreferrer">
-              <strong>GitHub</strong> ↗
-            </a>
-            <a class="btn" href="https://www.linkedin.com/in/uday-khanna-325507157" target="_blank" rel="noreferrer">
-              <strong>LinkedIn</strong> ↗
-            </a>
+            <a class="btn" href="https://github.com/ud2195" target="_blank" rel="noreferrer"><strong>GitHub</strong> ↗</a>
+            <a class="btn" href="https://www.linkedin.com/in/uday-khanna-325507157" target="_blank" rel="noreferrer"><strong>LinkedIn</strong> ↗</a>
           </div>
 
           <div class="small">
