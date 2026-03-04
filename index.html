@@ -14,19 +14,16 @@
 
   <style>
     :root{
-      --bg: #0b0f17;
-      --panel: rgba(255,255,255,0.06);
-      --panel2: rgba(255,255,255,0.08);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.70);
-      --muted2: rgba(255,255,255,0.55);
-      --line: rgba(255,255,255,0.12);
-      --shadow: 0 20px 50px rgba(0,0,0,0.35);
-      --accent: #7c5cff;      /* purple */
-      --accent2: #27e0a3;     /* mint */
-      --warn: #ffcc66;
-      --radius: 18px;
-      --radius2: 26px;
+      --bg: #000000;
+      --panel: #0a0a0a;
+      --panel2: #0f0f0f;
+      --text: #ffffff;
+      --muted: #b5b5b5;
+      --muted2: #8a8a8a;
+      --line: #1f1f1f;
+      --shadow: 0 18px 45px rgba(0,0,0,0.55);
+      --radius: 16px;
+      --radius2: 22px;
       --max: 1100px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
@@ -34,15 +31,12 @@
 
     *{ box-sizing: border-box; }
     html, body { height: 100%; }
+
     body{
       margin: 0;
       font-family: var(--sans);
       color: var(--text);
-      background:
-        radial-gradient(900px 600px at 20% 10%, rgba(124,92,255,0.25), transparent 55%),
-        radial-gradient(700px 500px at 80% 20%, rgba(39,224,163,0.18), transparent 55%),
-        radial-gradient(900px 600px at 40% 90%, rgba(124,92,255,0.12), transparent 60%),
-        var(--bg);
+      background: var(--bg);
       overflow-x: hidden;
     }
 
@@ -60,10 +54,10 @@
       position: sticky;
       top: 0;
       z-index: 30;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
-      background: linear-gradient(to bottom, rgba(11,15,23,0.78), rgba(11,15,23,0.35));
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
     .nav-inner{
       max-width: var(--max);
@@ -83,8 +77,8 @@
     .dot{
       width: 10px; height: 10px;
       border-radius: 999px;
-      background: radial-gradient(circle at 35% 35%, var(--accent2), var(--accent));
-      box-shadow: 0 0 0 6px rgba(124,92,255,0.10);
+      background: #fff;
+      box-shadow: 0 0 0 6px rgba(255,255,255,0.06);
     }
     .brand .name{
       font-weight: 700;
@@ -106,22 +100,25 @@
       padding: 8px 12px;
       border-radius: 999px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
+      background: transparent;
       transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      color: var(--muted);
     }
     .pill:hover{
       transform: translateY(-1px);
-      border-color: rgba(124,92,255,0.55);
-      background: rgba(124,92,255,0.10);
+      border-color: rgba(255,255,255,0.65);
+      background: rgba(255,255,255,0.06);
       text-decoration: none;
+      color: #fff;
     }
     .pill.primary{
-      border-color: rgba(39,224,163,0.55);
-      background: rgba(39,224,163,0.10);
+      border-color: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.10);
+      color: #fff;
     }
     .pill.primary:hover{
-      border-color: rgba(39,224,163,0.85);
-      background: rgba(39,224,163,0.16);
+      border-color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.14);
     }
 
     /* Hero */
@@ -136,7 +133,7 @@
     }
     .card{
       border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      background: linear-gradient(180deg, var(--panel2), var(--panel));
       border-radius: var(--radius2);
       box-shadow: var(--shadow);
     }
@@ -145,16 +142,7 @@
       position: relative;
       overflow: hidden;
     }
-    .shine{
-      position: absolute;
-      inset: -200px -120px auto auto;
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(circle at 30% 30%, rgba(39,224,163,0.18), transparent 60%),
-                  radial-gradient(circle at 60% 60%, rgba(124,92,255,0.20), transparent 60%);
-      opacity: 0.9;
-      pointer-events: none;
-    }
+
     .kicker{
       display: inline-flex;
       align-items: center;
@@ -166,7 +154,8 @@
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.03);
     }
-    .kicker b{ color: rgba(255,255,255,0.92); font-weight: 700; }
+    .kicker b{ color: #fff; font-weight: 700; }
+
     h1{
       margin: 14px 0 10px;
       font-size: clamp(34px, 4vw, 48px);
@@ -177,9 +166,10 @@
       margin: 0;
       font-size: 16px;
       color: var(--muted);
-      line-height: 1.6;
-      max-width: 66ch;
+      line-height: 1.65;
+      max-width: 68ch;
     }
+
     .cta{
       display: flex;
       flex-wrap: wrap;
@@ -197,26 +187,16 @@
       transition: transform .12s ease, border-color .12s ease, background .12s ease;
       font-size: 14px;
       text-decoration: none !important;
+      color: #fff;
     }
     .btn:hover{
       transform: translateY(-1px);
-      border-color: rgba(124,92,255,0.7);
-      background: rgba(124,92,255,0.10);
+      border-color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.06);
     }
     .btn strong{
       font-weight: 700;
       letter-spacing: -0.01em;
-    }
-    .btn.primary{
-      border-color: rgba(39,224,163,0.6);
-      background: rgba(39,224,163,0.10);
-    }
-    .btn.primary:hover{
-      border-color: rgba(39,224,163,0.95);
-      background: rgba(39,224,163,0.16);
-    }
-    .btn .icon{
-      width: 18px; height: 18px; display:inline-block;
     }
     .small{
       font-size: 12px;
@@ -226,7 +206,7 @@
     .small code{
       font-family: var(--mono);
       font-size: 12px;
-      color: rgba(255,255,255,0.80);
+      color: rgba(255,255,255,0.82);
       background: rgba(255,255,255,0.05);
       padding: 2px 6px;
       border: 1px solid var(--line);
@@ -242,20 +222,20 @@
     .mini{
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.02);
       padding: 14px 14px;
     }
     .mini h3{
       margin: 0 0 6px;
       font-size: 13px;
-      color: rgba(255,255,255,0.86);
+      color: rgba(255,255,255,0.92);
       letter-spacing: -0.01em;
     }
     .mini p{
       margin: 0;
       font-size: 13px;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.55;
     }
     .tagrow{
       display:flex;
@@ -269,12 +249,9 @@
       border-radius: 999px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.02);
-      color: rgba(255,255,255,0.80);
+      color: rgba(255,255,255,0.78);
       white-space: nowrap;
     }
-    .tag.accent{ border-color: rgba(124,92,255,0.5); background: rgba(124,92,255,0.10); }
-    .tag.mint{ border-color: rgba(39,224,163,0.5); background: rgba(39,224,163,0.10); }
-    .tag.warn{ border-color: rgba(255,204,102,0.45); background: rgba(255,204,102,0.10); }
 
     /* Sections */
     section{ margin-top: 28px; }
@@ -304,8 +281,8 @@
       padding: 18px;
       border-radius: var(--radius2);
       border: 1px solid var(--line);
-      background: linear-gradient(180deg, var(--panel), rgba(255,255,255,0.03));
-      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+      background: linear-gradient(180deg, var(--panel2), var(--panel));
+      box-shadow: 0 16px 40px rgba(0,0,0,0.30);
     }
     .panel h3{
       margin: 0 0 8px;
@@ -323,19 +300,19 @@
     .panel p{
       margin: 0;
       color: var(--muted);
-      line-height: 1.65;
+      line-height: 1.7;
       font-size: 14px;
     }
     .bullets{
       margin: 12px 0 0;
       padding-left: 18px;
       color: var(--muted);
-      line-height: 1.65;
+      line-height: 1.7;
       font-size: 14px;
     }
     .bullets li{ margin: 8px 0; }
     .bullets b{
-      color: rgba(255,255,255,0.88);
+      color: rgba(255,255,255,0.92);
       font-weight: 700;
     }
 
@@ -355,7 +332,7 @@
       padding: 14px;
       border-radius: var(--radius);
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.02);
     }
     .pat-item .top{
       display:flex;
@@ -372,16 +349,21 @@
       font-size: 11px;
       padding: 6px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(124,92,255,0.45);
-      background: rgba(124,92,255,0.10);
-      color: rgba(255,255,255,0.86);
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.90);
       white-space: nowrap;
     }
     .pat-item p{
       margin: 8px 0 0;
       color: var(--muted);
       font-size: 13px;
-      line-height: 1.6;
+      line-height: 1.65;
+    }
+    .pat-item a{
+      color: rgba(255,255,255,0.90);
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     /* Footer */
@@ -403,10 +385,9 @@
       gap: 10px;
     }
     .footlinks a{
-      color: rgba(255,255,255,0.75);
+      color: rgba(255,255,255,0.70);
     }
 
-    /* Responsive */
     @media (max-width: 900px){
       .hero-grid{ grid-template-columns: 1fr; }
       .grid{ grid-template-columns: 1fr; }
@@ -442,8 +423,6 @@
     <div class="hero">
       <div class="hero-grid">
         <div class="card hero-main">
-          <div class="shine"></div>
-
           <div class="kicker">
             <b>Founder</b> @ LayR • <b>Ex-ML Engineer</b> @ Atlassian • Building scalable GenAI & retrieval systems
           </div>
@@ -456,21 +435,23 @@
           </p>
 
           <div class="cta">
-            <a class="btn primary" href="https://github.com/ud2195" target="_blank" rel="noreferrer">
-              <span class="icon">↗</span><strong>GitHub</strong>
+            <a class="btn" href="https://layr.style/" target="_blank" rel="noreferrer">
+              <strong>LayR Website</strong> ↗
+            </a>
+            <a class="btn" href="https://apps.apple.com/us/app/outfit-planner-maker-layr/id6753217054" target="_blank" rel="noreferrer">
+              <strong>App Store</strong> ↗
+            </a>
+            <a class="btn" href="https://github.com/ud2195" target="_blank" rel="noreferrer">
+              <strong>GitHub</strong> ↗
             </a>
             <a class="btn" href="https://www.linkedin.com/in/uday-khanna-325507157" target="_blank" rel="noreferrer">
-              <span class="icon">↗</span><strong>LinkedIn</strong>
-            </a>
-            <!-- Replace with your LayR link -->
-            <a class="btn" href="#" target="_blank" rel="noreferrer">
-              <span class="icon">↗</span><strong>LayR</strong>
+              <strong>LinkedIn</strong> ↗
             </a>
           </div>
 
           <div class="small">
-            Note: Most production repositories are private. If you’re evaluating for a role, I’m happy to do a deep walkthrough of architecture, code structure, and decision trade-offs.
-            <br/>Quick focus areas: <code>Retrieval</code> <code>Re-ranking</code> <code>LLM eval</code> <code>CV + embeddings</code> <code>AWS infra</code>
+            Most production repositories are private. I’m happy to do a deep walkthrough of architecture, code structure, and decision trade-offs.
+            <br/>Focus areas: <code>Retrieval</code> <code>Re-ranking</code> <code>GenAI</code> <code>CV + embeddings</code> <code>AWS infra</code>
           </div>
         </div>
 
@@ -479,11 +460,11 @@
             <h3>What I build</h3>
             <p>AI-native experiences + systems that are fast, reliable, and cost-aware in production.</p>
             <div class="tagrow">
-              <span class="tag accent">GenAI</span>
-              <span class="tag mint">Retrieval</span>
+              <span class="tag">GenAI</span>
+              <span class="tag">Retrieval</span>
               <span class="tag">NLP</span>
               <span class="tag">Computer Vision</span>
-              <span class="tag warn">AWS</span>
+              <span class="tag">AWS</span>
             </div>
           </div>
 
@@ -492,7 +473,7 @@
             <p>Latency • cost • quality • evaluation rigor • clear ROI.</p>
             <div class="tagrow">
               <span class="tag">MRR / Hit-rate</span>
-              <span class="tag">LLM-as-judge</span>
+              <span class="tag">Hybrid Search</span>
               <span class="tag">HNSW / KNN</span>
               <span class="tag">Hamming / Binary</span>
             </div>
@@ -514,38 +495,39 @@
           <div class="meta">
             <span>Founder</span><span>•</span><span>2025 → Present</span><span>•</span><span>Consumer AI</span>
           </div>
+
           <p>
-            LayR helps users finally wear everything they own — with confidence.
-            It organizes wardrobes, understands body shape & color palette, and generates personalized outfits in seconds.
+            LayR turns your wardrobe into a personalized styling engine. Users upload their clothes once, and LayR builds a
+            style profile (body shape + color palette + preferences) to generate outfits that fit real contexts — work, dates,
+            travel, weddings — without the “I have nothing to wear” spiral.
           </p>
 
           <ul class="bullets">
-            <li><b>Style profiling:</b> body shape + color analysis + preference capture → consistent personalization.</li>
-            <li><b>Wardrobe intelligence:</b> item metadata extraction, tagging, and retrieval to power instant outfit ideas.</li>
-            <li><b>Outfit generation:</b> occasion-aware recommendations with saving/recall loops for retention.</li>
-            <li><b>AI-native UX loops:</b> upload → value → save → notification/plan → repeat.</li>
+            <li><b>Style Profile Engine:</b> photo-based color analysis + body-shape inputs + preference capture → consistent personalization.</li>
+            <li><b>Wardrobe Intelligence:</b> structured item understanding (metadata, seasons/occasions) + retrieval to surface the right pieces quickly.</li>
+            <li><b>Outfit Generation:</b> occasion-aware outfit composition from owned items with saved looks + fast re-generation.</li>
+            <li><b>Retention Loops:</b> upload → better outfits → save to plans/occasions → revisit → repeat; quality improves as the closet grows.</li>
           </ul>
         </div>
 
         <div class="panel">
-          <h3>Why it’s hard (and what I solved)</h3>
+          <h3>Turning AI demos into a real product</h3>
           <p>
-            AI styling isn’t just model demos — it’s latency, costs, and product loops.
-            I focus on making the system feel <b>instant</b>, <b>reliable</b>, and <b>habit-forming</b>.
+            AI styling is easy to demo but hard to ship as a real product. The challenge is balancing quality,
+            latency, and cost while keeping the experience fast enough that users actually come back.
           </p>
 
           <ul class="bullets">
-            <li><b>Latency discipline:</b> caching + batching + model selection to keep experiences snappy.</li>
-            <li><b>Quality evaluation:</b> human-in-the-loop and LLM-assisted judging to ship improvements safely.</li>
-            <li><b>Practical infra:</b> AWS-first design (serverless + managed services) with production monitoring.</li>
-            <li><b>Growth-friendly outputs:</b> content-ready transformations for short-form sharing loops.</li>
+            <li><b>Latency discipline:</b> caching strategies, efficient orchestration, and selective generation so recommendations feel quick.</li>
+            <li><b>Quality iteration:</b> prompt + pipeline improvements using real usage feedback to improve relevance over time.</li>
+            <li><b>Production infrastructure:</b> AWS-first architecture (serverless + managed services) designed to scale cost-efficiently.</li>
+            <li><b>Growth-friendly outputs:</b> content-ready results that translate well to short-form social formats.</li>
           </ul>
 
-          <div class="tagrow" style="margin-top:12px;">
-            <span class="tag mint">Personalization</span>
-            <span class="tag accent">UX Loops</span>
-            <span class="tag">Cost-aware AI</span>
-            <span class="tag warn">Production-first</span>
+          <div class="small" style="margin-top:12px;">
+            Links: <a href="https://layr.style/" target="_blank" rel="noreferrer">layr.style</a> •
+            <a href="https://apps.apple.com/us/app/outfit-planner-maker-layr/id6753217054" target="_blank" rel="noreferrer">App Store</a> •
+            <a href="https://www.youtube.com/@LayR_outfit_app" target="_blank" rel="noreferrer">YouTube (TikTok examples)</a>
           </div>
         </div>
       </div>
@@ -565,14 +547,14 @@
             <span>Search / Retrieval</span><span>•</span><span>Re-ranking</span><span>•</span><span>Evaluation</span><span>•</span><span>AWS</span>
           </div>
           <p>
-            Led experiments and production improvements across retrieval and re-ranking systems.
-            Focused on balancing quality with infra constraints (latency, memory, storage).
+            Led experiments and production improvements across retrieval and re-ranking systems, balancing quality with infra constraints
+            (latency, memory, storage).
           </p>
           <ul class="bullets">
-            <li><b>Retrieval + re-ranking:</b> evaluated embedding models (MRR/AP@k/hit-rate) and optimized pipelines with cost constraints.</li>
+            <li><b>Retrieval + re-ranking:</b> evaluated embedding models (MRR/AP@k/hit-rate) and optimized pipelines under cost constraints.</li>
             <li><b>Binary embeddings migration:</b> redesigned similarity search from cosine → Hamming; improved overall latency by ~2.5s/query.</li>
-            <li><b>Hybrid search:</b> combined semantic + keyword techniques and integrated SOTA rerankers + query reformulation.</li>
-            <li><b>Evaluation rigor:</b> built an LLM-as-judge framework with human-in-the-loop for high-fidelity assessment.</li>
+            <li><b>Hybrid search:</b> combined semantic + keyword approaches; integrated rerankers and query reformulation.</li>
+            <li><b>Evaluation rigor:</b> built an LLM-as-judge evaluation framework to improve iteration speed and consistency.</li>
           </ul>
         </div>
 
@@ -582,13 +564,12 @@
             <span>Medical NLP</span><span>•</span><span>Document AI</span><span>•</span><span>SageMaker</span>
           </div>
           <p>
-            Built and deployed NLP and CV pipelines for real-world document automation — from BERT-based entailment
-            to table extraction and checkbox detection.
+            Built and deployed NLP and CV pipelines for document automation — from BERT-based models to table extraction and checkbox detection.
           </p>
           <ul class="bullets">
-            <li><b>NLP:</b> fine-tuned BERT models and improved task accuracy over prior baselines.</li>
-            <li><b>CV:</b> automated document understanding workflows (handwritten detection, table extraction, etc.).</li>
-            <li><b>Infra:</b> designed training + deployment pipelines using Docker and AWS SageMaker to speed experimentation cycles.</li>
+            <li><b>NLP:</b> fine-tuned BERT models and improved accuracy over previous baselines.</li>
+            <li><b>CV:</b> automated document understanding workflows (handwritten detection, table extraction, checkbox detection).</li>
+            <li><b>Infra:</b> designed Docker + AWS SageMaker pipelines to accelerate experimentation and deployment.</li>
           </ul>
         </div>
       </div>
@@ -598,39 +579,39 @@
     <section id="patents">
       <div class="section-title">
         <h2>Patents</h2>
-        <div class="hint">Selected inventions (add links if public)</div>
+        <div class="hint">Published applications</div>
       </div>
 
       <div class="panel">
         <p style="margin-bottom:10px;">
-          I’ve contributed to inventions focused on <b>ML-powered interfaces</b> and <b>operational insight experiences</b>.
+          Patents published with Atlassian focused on <b>ML-powered interfaces</b> and <b>operational insight experiences</b>:
         </p>
 
         <div class="pat">
           <div class="pat-item">
             <div class="top">
               <h4>Generative interface for multi-platform content</h4>
-              <span class="badge">Patent (Pending)</span>
+              <span class="badge">US20250322145A1</span>
             </div>
             <p>
-              Methods for using trained ML models to generate interface components that adapt content experiences across platforms.
+              <a href="https://patents.google.com/patent/US20250322145A1/en?q=(uday+khanna)&assignee=atlassian&oq=uday+khanna+atlassian&peid=64c301942cb88%3A2e%3A931611d0" target="_blank" rel="noreferrer">View on Google Patents</a>
             </p>
           </div>
 
           <div class="pat-item">
             <div class="top">
               <h4>Applying trained ML models to output past incident insight interface components to an incident alert management UI</h4>
-              <span class="badge">Patent (Pending)</span>
+              <span class="badge">US20250111248A1</span>
             </div>
             <p>
-              Systems for surfacing historical incident insights directly inside alert management workflows to improve response speed and decision quality.
+              <a href="https://patents.google.com/patent/US20250111248A1/en?q=(uday+khanna)&assignee=atlassian&oq=uday+khanna+atlassian" target="_blank" rel="noreferrer">View on Google Patents</a>
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SELECTED WORK / UX LOOPS -->
+    <!-- SELECTED WORK -->
     <section id="work">
       <div class="section-title">
         <h2>Selected Work</h2>
@@ -641,13 +622,13 @@
         <div class="panel">
           <h3>Retrieval systems that balance quality + cost</h3>
           <p>
-            I approach retrieval like a product: quality metrics are necessary, but not sufficient.
-            The winning system optimizes quality while respecting latency, memory, and infra constraints.
+            I approach retrieval like a product: offline metrics are necessary, but not sufficient.
+            The best systems optimize quality while respecting latency, memory, and infra constraints.
           </p>
           <ul class="bullets">
             <li><b>Trade-offs:</b> embedding dimensionality vs storage vs latency vs quality.</li>
-            <li><b>Indexing:</b> KNN/HNSW/IVF choices based on constraints, not hype.</li>
-            <li><b>Evaluation:</b> offline metrics + calibrated human/LLM judgments.</li>
+            <li><b>Indexing:</b> choosing KNN/HNSW/IVF based on constraints, not hype.</li>
+            <li><b>Evaluation:</b> strong offline metrics + practical online iteration loops.</li>
           </ul>
         </div>
 
@@ -660,7 +641,7 @@
           <ul class="bullets">
             <li><b>Personalization loop:</b> profile → better recs → refinement → better recs.</li>
             <li><b>Wardrobe loop:</b> upload items → outfits improve → upload more items.</li>
-            <li><b>Share loop:</b> transformations → short-form content → installs → more content.</li>
+            <li><b>Content loop:</b> shareable outputs → social discovery → installs → more outputs.</li>
           </ul>
         </div>
       </div>
@@ -682,14 +663,14 @@
           </p>
 
           <div class="cta" style="margin-top:14px;">
-            <a class="btn primary" href="mailto:udaykhanna2195@gmail.com">
-              <span class="icon">✉</span><strong>Email</strong> <span style="color:var(--muted2); font-size:12px;">udaykhanna2195@gmail.com</span>
+            <a class="btn" href="mailto:udaykhanna2195@gmail.com">
+              <strong>Email</strong> ↗ <span style="color:var(--muted2); font-size:12px;">udaykhanna2195@gmail.com</span>
             </a>
             <a class="btn" href="https://github.com/ud2195" target="_blank" rel="noreferrer">
-              <span class="icon">↗</span><strong>GitHub</strong>
+              <strong>GitHub</strong> ↗
             </a>
             <a class="btn" href="https://www.linkedin.com/in/uday-khanna-325507157" target="_blank" rel="noreferrer">
-              <span class="icon">↗</span><strong>LinkedIn</strong>
+              <strong>LinkedIn</strong> ↗
             </a>
           </div>
 
@@ -699,18 +680,18 @@
         </div>
 
         <div class="panel">
-          <h3>Links (edit these)</h3>
+          <h3>Links</h3>
           <ul class="bullets">
+            <li><b>LayR:</b> <a href="https://layr.style/" target="_blank" rel="noreferrer">layr.style</a> •
+              <a href="https://apps.apple.com/us/app/outfit-planner-maker-layr/id6753217054" target="_blank" rel="noreferrer">App Store</a></li>
+            <li><b>YouTube:</b> <a href="https://www.youtube.com/@LayR_outfit_app" target="_blank" rel="noreferrer">@LayR_outfit_app</a> (videos used across TikTok accounts)</li>
             <li><b>GitHub:</b> <a href="https://github.com/ud2195" target="_blank" rel="noreferrer">github.com/ud2195</a></li>
-            <li><b>Portfolio:</b> <a href="https://ud2195.github.io" target="_blank" rel="noreferrer">ud2195.github.io</a></li>
             <li><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/uday-khanna-325507157" target="_blank" rel="noreferrer">uday-khanna-325507157</a></li>
-            <li><b>LayR:</b> <span style="color:var(--muted2);">Add your App Store / website link</span></li>
-            <li><b>TikTok:</b> <span style="color:var(--muted2);">Add 2–3 example links</span></li>
-            <li><b>Google Patents:</b> <span style="color:var(--muted2);">Add your patents search link (optional)</span></li>
+            <li><b>Patents:</b>
+              <a href="https://patents.google.com/patent/US20250322145A1/en?q=(uday+khanna)&assignee=atlassian&oq=uday+khanna+atlassian&peid=64c301942cb88%3A2e%3A931611d0" target="_blank" rel="noreferrer">US20250322145A1</a>,
+              <a href="https://patents.google.com/patent/US20250111248A1/en?q=(uday+khanna)&assignee=atlassian&oq=uday+khanna+atlassian" target="_blank" rel="noreferrer">US20250111248A1</a>
+            </li>
           </ul>
-          <div class="small">
-            Replace the placeholder LayR + TikTok URLs above with real links and you're ready to share this portfolio.
-          </div>
         </div>
       </div>
     </section>
